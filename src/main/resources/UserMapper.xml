@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.cxy.mybatis.dao.UserMapper">
+    <cache/>
+    <resultMap type="cn.com.cxy.mybatis.domain.User" id="detailUserResultMap">
+        <constructor>
+            <idArg column="user_id"/>
+            <arg column="user_name"/>
+        </constructor>
+
+        <result property="password" column="user_pwd"/>
+        <result property="type" column="user_type" javaType="cn.com.cxy.mybatis.domain.UserType" /> <!--typeHandler="com.ashan.mybatis.UserTypeHandler"-->
+        <result property="svcnum" column="svc_num" />
+
+        <association property="cust" javaType="cn.com.cxy.mybatis.domain.Cust" >
+            <id property="id" column="cust_id"/>
+            <result property="custname" column="cust_name"/>
+            <result property="certNo" column="cert_no"/>
+        </association>
+
+        <collection property="accts" ofType="cn.com.cxy.mybatis.domain.Acct">
+            <id property="id" column="acct_id" />
+            <result property="payName" column="pay_name"/>
+            <result property="bankNo" column="bank_no"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectUserDetail" resultMap="detailUserResultMap">
+        select user_id,user_name,user_type,cust_id
+            from tf_f_user a
+            where a.user_id=#{ userId, jdbcType= VARCHAR }
+        and user_name= #{userName}
+    </select>
+</mapper>
