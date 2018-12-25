@@ -15,12 +15,12 @@ import java.util.Map;
 public class SqlSessionFactoryTest {
 
     public static void main(String[] args) throws IOException {
-        InputStream is= Resources.getResourceAsStream("mybatis-config.xml");
+        InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        Map paraMap=new HashMap();
-        paraMap.put("userId","12341234");
-        paraMap.put("userName","ashan");
-        List<User> list = sqlSession.selectList("cn.com.cxy.mybatis.dao.UserMapper.selectUserDetail",paraMap);
+        Map paraMap = new HashMap();
+        paraMap.put("userId", "12341234");
+        paraMap.put("userName", "ashan");
+        List<User> list = sqlSession.selectList("cn.com.cxy.mybatis.dao.UserMapper.selectUserDetail", paraMap);
     }
 }

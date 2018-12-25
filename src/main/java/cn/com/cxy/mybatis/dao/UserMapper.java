@@ -5,5 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
 
-    User selectUserDetail(@Param("userId") String id);
+    User selectUserDetail(@Param("userId") String id, @Param("userName") String userName);
+
+    User selectUserDetailInclude(@Param("userId") String id, @Param("userName") String userName);
 }

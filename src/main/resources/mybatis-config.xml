@@ -6,7 +6,7 @@
 <configuration>
 
     <properties resource="db.properties">
-        <property name="password" value="123456"/>
+        <property name="userType" value="user_type"/>
     </properties>
 
     <settings>
