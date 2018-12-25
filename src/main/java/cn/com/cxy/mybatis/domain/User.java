@@ -10,7 +10,7 @@ public class User {
     /**
      * 用户id，主键
      */
-    private String id;
+    private Long id;
 
     private String username;
 
@@ -36,7 +36,7 @@ public class User {
      */
     private UserType type;
 
-    public User(String id, String username) {
+    public User(Long id, String username) {
         this.id = id;
         this.username = username;
     }

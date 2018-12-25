@@ -12,7 +12,10 @@
     <settings>
         <setting name="cacheEnabled" value="true"/>
     </settings>
-    
+
+    <typeHandlers>
+        <typeHandler javaType="cn.com.cxy.mybatis.domain.UserType" handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+    </typeHandlers>
     <!--<plugins>
         <plugin interceptor="org.apache.ibatis.builder.ExamplePlugin">
             <property name="" value=""/>

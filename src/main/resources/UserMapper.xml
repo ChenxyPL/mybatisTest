@@ -44,4 +44,15 @@
         where a.user_id=#{ userId, jdbcType= VARCHAR }
           and user_name= ${userName}
     </select>
+
+    <insert id="saveUserSelective" useGeneratedKeys="true" keyProperty="id">
+    <!--<insert id="saveUserSelective">-->
+        <!--<selectKey keyProperty="id" resultType="int" order="BEFORE">
+            select CAST(RANDOM()*1000000 as INTEGER) a from SYSIBM.SYSDUMMY1
+        </selectKey>-->
+        insert into tf_f_user(user_name,user_type,cust_id) values (
+          #{id, jdbcType=BIGINT},
+          #{type, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler, jdbcType=TINYINT},
+          #{cust.id, jdbcType=BIGINT})
+    </insert>
 </mapper>
