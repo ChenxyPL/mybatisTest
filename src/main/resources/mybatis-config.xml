@@ -9,9 +9,9 @@
         <property name="userType" value="user_type"/>
     </properties>
 
-    <settings>
+    <!--<settings>
         <setting name="cacheEnabled" value="true"/>
-    </settings>
+    </settings>-->
 
     <typeHandlers>
         <typeHandler javaType="cn.com.cxy.mybatis.domain.UserType" handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>

@@ -5,6 +5,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,13 +16,28 @@ import java.util.Map;
 
 public class SqlSessionFactoryTest {
 
-    public static void main(String[] args) throws IOException {
+    SqlSession sqlSession = null;
+
+    @Before
+    public void init() throws IOException {
         InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+        sqlSession = sqlSessionFactory.openSession();
+    }
+
+    @Test
+    public void selectOne() {
         Map paraMap = new HashMap();
         paraMap.put("userId", "12341234");
         paraMap.put("userName", "ashan");
-        List<User> list = sqlSession.selectList("cn.com.cxy.mybatis.dao.UserMapper.selectUserDetail", paraMap);
+        List<User> list = sqlSession.selectOne("cn.com.cxy.mybatis.dao.UserMapper.selectUserDetail", paraMap);
+    }
+
+    @Test
+    public void selectInclude() {
+        Map paraMap = new HashMap();
+        paraMap.put("userId", "12341234");
+        paraMap.put("userName", "ashan");
+        List<User> list = sqlSession.selectList("cn.com.cxy.mybatis.dao.UserMapper.selectUserDetailInclude", paraMap);
     }
 }

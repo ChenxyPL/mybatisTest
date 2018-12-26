@@ -7,7 +7,7 @@ public interface UserMapper {
 
     void saveUserSelective(User user);
 
-    User selectUserDetail(@Param("userId") String id, @Param("userName") String userName);
+    User selectUserDetail(@Param("userId") String id, @Param("userName") String userName, @Param("userType") Integer userType);
 
     User selectUserDetailInclude(@Param("userId") String id, @Param("userName") String userName);
 }
