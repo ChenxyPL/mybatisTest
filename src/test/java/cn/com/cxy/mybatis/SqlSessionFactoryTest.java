@@ -28,8 +28,8 @@ public class SqlSessionFactoryTest {
     @Test
     public void selectOne() {
         Map paraMap = new HashMap();
-        paraMap.put("userId", "12341234");
-        paraMap.put("userName", "ashan");
+        paraMap.put("userId", 1);
+        paraMap.put("userName", "abcd");
         List<User> list = sqlSession.selectOne("cn.com.cxy.mybatis.dao.UserMapper.selectUserDetail", paraMap);
     }
 
@@ -37,7 +37,7 @@ public class SqlSessionFactoryTest {
     public void selectInclude() {
         Map paraMap = new HashMap();
         paraMap.put("userId", "12341234");
-        paraMap.put("userName", "ashan");
+        paraMap.put("userName", "abcd");
         List<User> list = sqlSession.selectList("cn.com.cxy.mybatis.dao.UserMapper.selectUserDetailInclude", paraMap);
     }
 }

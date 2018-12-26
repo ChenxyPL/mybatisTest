@@ -2,11 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.com.cxy.mybatis.dao.UserMapper">
 
+    <cache/>
     <!-- cn.com.cxy.mybatis.dao.UserMapper.mapper_resultMap[detailUserResultMap] -->
     <resultMap type="cn.com.cxy.mybatis.domain.User" id="detailUserResultMap">
         <constructor>
-            <idArg column="user_id"/>
-            <arg column="user_name"/>
+            <idArg column="user_id" javaType="Long"/>
+            <arg column="user_name" javaType="String"/>
         </constructor>
 
         <result property="password" column="user_pwd"/>
